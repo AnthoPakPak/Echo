@@ -64,7 +64,7 @@ public struct ConformanceDescriptor: LayoutWrapper {
         .assumingMemoryBound(to: CChar.self)
       
       guard let anyClass = objc_lookUpClass(ptr) else {
-        if ptr.string == "FAProfilePictureStore" { //Fix crash when instantiating UIImagePickerController with UIImagePickerController() on iOS 16. It seems that using UIImagePickerController(rootViewController: self) also workarounds the problem.
+        if ptr.string.hasPrefix("FA") { //Fix crash when instantiating UIImagePickerController with UIImagePickerController() on iOS 16. It workarounds crashes for classes FAProfilePictureStore, FAChecklistStore and maybe more.
           return nil
         }
         fatalError("No Objective-C class named \(ptr.string)")
