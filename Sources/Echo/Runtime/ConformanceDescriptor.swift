@@ -64,10 +64,8 @@ public struct ConformanceDescriptor: LayoutWrapper {
         .assumingMemoryBound(to: CChar.self)
       
       guard let anyClass = objc_lookUpClass(ptr) else {
-        if ptr.string.hasPrefix("FA") || ptr.string.hasPrefix("SW") { //Fix crash when instantiating UIImagePickerController with UIImagePickerController() on iOS 16. It workarounds crashes for classes FAProfilePictureStore, FAChecklistStore, SWCollaborationMetadata and maybe more.
-          return nil
-        }
-        fatalError("No Objective-C class named \(ptr.string)")
+        //fatalError("No Objective-C class named \(ptr.string)")
+        return nil //Fix crash when instantiating UIImagePickerController with UIImagePickerController() on iOS 16. It workarounds crashes for classes FAProfilePictureStore, FAChecklistStore, SWCollaborationMetadata, CKInboxSection and maybe more. I initially wanted to only return nil for some classes, but it seems there are too many.
       }
       
       return reflect(anyClass) as? ObjCClassWrapperMetadata
