@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
   spec.homepage         = 'https://github.com/AnthoPakPak/Echo'
   spec.source           = { :git => 'https://github.com/AnthoPakPak/Echo.git' }
   
-  spec.source_files     = 'Sources/*'
+  spec.source_files     = 'Sources/Echo/*.swift', 'Sources/Echo/*/*.swift'
   spec.platform         = :ios, '12.0'
   spec.frameworks       = [ 'Foundation' ]
   spec.swift_version    = '5.0'
