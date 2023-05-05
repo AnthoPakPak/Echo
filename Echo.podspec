@@ -6,8 +6,9 @@ Pod::Spec.new do |spec|
 
   spec.author           = { 'Alejandro Alonso' => 'none@me.com' }
   spec.homepage         = 'https://github.com/AnthoPakPak/Echo'
-  spec.source           = { :git => 'https://github.com/AnthoPakPak/Echo.git', :tag => '#{spec.version}' }
+  spec.source           = { :git => 'https://github.com/AnthoPakPak/Echo.git' }
   
+  spec.source_files     = '*.swift'
   spec.platform         = :ios, '12.0'
   spec.frameworks       = [ 'Foundation' ]
   spec.swift_version    = '5.0'
